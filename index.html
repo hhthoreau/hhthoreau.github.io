@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume</title>
+  <meta name="description" content="19년 경력 프로젝트 매니저 겸 현지화 엔지니어의 이력서입니다. CMS, 기술 문서, 다국어 현지화 프로젝트 전문가." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface-2: #181818;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #ffffff;
+      --accent-dim: rgba(255, 255, 255, 0.55);
+      --accent-faint: rgba(255, 255, 255, 0.12);
+      --text: #e8e8e8;
+      --muted: #888888;
+      --tag-bg: rgba(255, 255, 255, 0.06);
+      --radius: 12px;
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+
+
+    /* ─── Layout ───────────────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 990px;
+      margin: 0 auto;
+      padding: 6rem 2rem 8rem;
+    }
+
+    /* ─── Fade-in animations ────────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      animation: fadeUp 0.7s var(--transition) both;
+    }
+
+    .d1 {
+      animation-delay: 0.05s;
+    }
+
+    .d2 {
+      animation-delay: 0.15s;
+    }
+
+    .d3 {
+      animation-delay: 0.25s;
+    }
+
+    .d4 {
+      animation-delay: 0.35s;
+    }
+
+    .d5 {
+      animation-delay: 0.45s;
+    }
+
+    .d6 {
+      animation-delay: 0.55s;
+    }
+
+    .d7 {
+      animation-delay: 0.65s;
+    }
+
+    /* ─── Header / Hero ────────────────────────────────────── */
+    .hero {
+      margin-bottom: 4.5rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--accent-dim);
+      line-height: 1.85;
+      max-width: 680px;
+    }
+
+    .hero-bio+.hero-bio {
+      margin-top: 1rem;
+    }
+
+    .hero-bio strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ─── Contact strip ────────────────────────────────────── */
+    .contact-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2.2rem;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.35rem 0.9rem;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .contact-chip:hover {
+      color: var(--accent);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-chip svg {
+      flex-shrink: 0;
+    }
+
+    /* ─── Sections ─────────────────────────────────────────── */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ─── Experience cards ──────────────────────────────────── */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.8rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent-faint);
+      border-radius: 3px 0 0 3px;
+      transition: background var(--transition);
+    }
+
+    .exp-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .exp-card:hover::before {
+      background: var(--accent);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+    }
+
+    .exp-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .exp-period {
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.2rem 0.7rem;
+      white-space: nowrap;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--accent-dim);
+      line-height: 1.75;
+    }
+
+    .exp-desc+.exp-desc {
+      margin-top: 0.5rem;
+    }
+
+    /* ─── Skills grid ───────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .skill-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--accent-dim);
+      transition: color var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+
+    .skill-pill:hover {
+      color: var(--accent);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: var(--surface-2);
+      transform: translateY(-2px);
+    }
+
+    .skill-arrow {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* ─── Tools / tags ──────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.28rem 0.7rem;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .tag:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ─── Footer ────────────────────────────────────────────── */
+    .footer {
+      margin-top: 6rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-updated {
+      font-size: 0.72rem;
+      color: rgba(136, 136, 136, 0.6);
+    }
+
+    /* ─── Print styles ──────────────────────────────────────── */
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .blob,
+      body::before {
+        display: none;
+      }
+
+      .exp-card,
+      .skill-pill {
+        border-color: #ddd;
+        background: #fafafa;
+      }
+
+      .exp-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .page {
+        padding: 3.5rem 1.2rem 5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .exp-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="page">
+
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <header class="hero">
+
+      <h1 class="animate d2">Project Manager &amp;<br />Localization Professional</h1>
+      <p class="hero-sub animate d2">19년 경력 · CMS · 기술문서 · 다국어 현지화</p>
+
+      <div class="hero-divider animate d3"></div>
+
+      <p class="hero-bio animate d3">
+        CMS 솔루션과 도큐먼트 관리 SW 분야에서 기획, 컨설팅, 프로젝트 관리, QA 테스트 분야에 숙련된
+        <strong>19년 경력 프로젝트 매니저 겸 프로덕트 기획자</strong>입니다.
+      </p>
+      <p class="hero-bio animate d3">
+        기계, 자동차, 반도체, 게임 등 다양한 산업 분야에서 기술 콘텐츠의 테크니컬 라이팅, 영어→한국어 번역,
+        다국어 현지화 프로젝트 관리, 로컬라이제이션 엔지니어링(Trados, memoQ, XML 등)을 수행할 수 있는
+        <strong>현지화 매니저 겸 엔지니어</strong>입니다.
+      </p>
+
+      <!-- Contact chips -->
+      <div class="contact-strip animate d4">
+        <span class="contact-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-10 6L2 7" />
+          </svg>
+          email@example.com
+        </span>
+        <span class="contact-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          +82 10-0000-0000
+        </span>
+        <span class="contact-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Seoul, South Korea
+        </span>
+        <span class="contact-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+          LinkedIn
+        </span>
+      </div>
+    </header>
+
+    <!-- ── Experience ─────────────────────────────────────────── -->
+    <section class="animate d4" id="experience">
+      <h2 class="section-label">Experience</h2>
+
+      <div class="exp-list">
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-title">Senior Project Manager</span>
+            <span class="exp-period">FEB 2022 — JAN 2026</span>
+          </div>
+          <p class="exp-desc">
+            CMS 솔루션 및 도큐먼트 관리 SW의 제품 기획 및 컨설팅, 프로젝트 전반의 일정·리소스·리스크 관리, QA 테스트 전략 수립 및 실행을 주도하였습니다.
+          </p>
+          <p class="exp-desc">
+            Focusing on building high-end interactive digital experiences with precise micro-interactions and zero
+            technical bloat.
+          </p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-title">Localization Manager</span>
+            <span class="exp-period">2020 — 2023</span>
+          </div>
+          <p class="exp-desc">
+            기계, 자동차, 반도체, 게임 등 산업 분야의 다국어 현지화 프로젝트 전체 주기(계획 → 번역 → QA → 납품)를 총괄 관리하였습니다.
+          </p>
+          <p class="exp-desc">
+            Developed robust, scalable localization workflows using React, Next.js, and TypeScript for world-class
+            global clients.
+          </p>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <span class="exp-title">Technical Writer</span>
+            <span class="exp-period">2020 — 2023</span>
+          </div>
+          <p class="exp-desc">
+            기술 매뉴얼, 사용자 가이드, API 문서 등 다양한 기술 콘텐츠의 기획 및 작성, 영어→한국어 번역 업무를 수행하였습니다.
+          </p>
+          <p class="exp-desc">
+            Developed robust, scalable applications using structured authoring tools and XML-based documentation
+            pipelines.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Capabilities ──────────────────────────────────────── -->
+    <section class="animate d5" id="capabilities">
+      <h2 class="section-label">Capabilities</h2>
+
+      <div class="tags">
+        <span class="tag">UI/UX Design</span>
+        <span class="tag">React &amp; Vite</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Animation (Framer Motion)</span>
+        <span class="tag">Performance Optimization</span>
+        <span class="tag">Design Systems</span>
+        <span class="tag">Technical Writing</span>
+        <span class="tag">Localization Engineering</span>
+        <span class="tag">Project Management</span>
+        <span class="tag">QA Testing</span>
+      </div>
+    </section>
+
+    <!-- ── Tools ─────────────────────────────────────────────── -->
+    <section class="animate d6" id="tools">
+      <h2 class="section-label">Tools &amp; Technologies</h2>
+
+      <div class="tags">
+        <span class="tag">Trados Studio</span>
+        <span class="tag">memoQ</span>
+        <span class="tag">DITA / XML</span>
+        <span class="tag">MadCap Flare</span>
+        <span class="tag">Confluence</span>
+        <span class="tag">Jira</span>
+        <span class="tag">Git</span>
+        <span class="tag">React</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Slack</span>
+        <span class="tag">Notion</span>
+        <span class="tag">MS Project</span>
+      </div>
+    </section>
+
+    <!-- ── Languages ─────────────────────────────────────────── -->
+    <section class="animate d7" id="languages">
+      <h2 class="section-label">Languages</h2>
+
+      <div class="tags">
+        <span class="tag">한국어 (Native)</span>
+        <span class="tag">English (Business)</span>
+      </div>
+    </section>
+
+    <!-- ── Footer ────────────────────────────────────────────── -->
+    <footer class="footer animate d7">
+      <span class="footer-copy">Project Manager &amp; Localization Engineer</span>
+      <span class="footer-updated">Updated April 2026</span>
+    </footer>
+
+  </div><!-- /page -->
+
+</body>
+
+</html>
